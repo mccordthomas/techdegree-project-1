@@ -1,0 +1,62 @@
+"""Python Guessing Game"""
+
+import random
+
+def guess():
+    try:
+        guess = int(input('Pick a number between 1 and 20:  '))
+    except:
+        print("AI's only know numbers... I need a number")
+    else:
+        return guess
+
+high_score = []
+wanna_play = input('Do you wanna play my guessing game? [y]es/[n]o:  ')
+
+while wanna_play == 'y':
+    print('----------------------------------')
+    print('   Welcome to the Guessing Game   ')
+    print('----------------------------------')
+
+    ai_choice = random.randint(0,20)
+    tries = 0
+
+    player_guess = guess()
+
+    while player_guess != ai_choice:
+        if player_guess > ai_choice:
+            print("My number is lower!")
+            tries += 1
+            player_guess = guess()
+
+        elif player_guess < ai_choice:
+            print("My number is higher!")
+            tries += 1
+            player_guess = guess()
+
+        if player_guess == ai_choice:
+            tries += 1
+            break
+    
+    print('\n')
+    print("You Got It! Great Job!")
+    print(f"You did it in {tries} tries!")
+    print('\n')
+    
+    high_score.append(tries)
+    high_score.sort()
+    print(f'The HIGHSCORE is: {high_score[0]}')
+    print('\n')
+    
+    play_again = input('Would you like to play again? [y]es/[n]o:  ')
+
+    if play_again == 'y':
+        print('\n')
+        print("Awesome! Let's play!")
+        print('\n')
+        ai_choice = int(random.randrange(1,21))
+        tries = 0
+
+    else:
+        print('Thank you for playing!')
+        break
