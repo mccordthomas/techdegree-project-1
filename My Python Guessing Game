@@ -1,4 +1,4 @@
-"""Python Guessing Game"""
+"""My Python Guessing Game"""
 
 import random
 
@@ -60,3 +60,4 @@ while wanna_play == 'y':
     else:
         print('Thank you for playing!')
         break
+
