@@ -1,81 +1,112 @@
-"""My Python Guessing Game"""
+"""
+Python Web Development Techdegree
+Project 1 - Number Guessing Game
+--------------------------------
+
+For this first project we will be using Workspaces. 
+
+NOTE: If you strongly prefer to work locally on your own computer, you can totally do that by clicking: File -> Download Workspace in the file menu after you fork the snapshot of this workspace.
+
+"""
 
 import random
 
 
-def guess():
-    try:
-        guess = int(input('Pick a number, 1-20:\n  *'))
-    except:
-        print("AI's only know numbers... I need a number")
-    else:
-        return guess
+def start_game():
+    """Psuedo-code Hints
+    
+    When the program starts, we want to:
+    ------------------------------------
+    1. Display an intro/welcome message to the player.
+    2. Store a random number as the answer/solution.
+    3. Continuously prompt the player for a guess.
+      a. If the guess greater than the solution, display to the player "It's lower".
+      b. If the guess is less than the solution, display to the player "It's higher".
+    
+    4. Once the guess is correct, stop looping, inform the user they "Got it"
+         and show how many attempts it took them to get the correct number.
+    5. Let the player know the game is ending, or something that indicates the game is over.
+    
+    ( You can add more features/enhancements if you'd like to. )
+    """
+    # write your code inside this function.
 
-
-high_score = []
-wanna_play = input('Do you wanna play my guessing game? [y]es/[n]o:  ')
-
-while wanna_play == 'y':
-    print('----------------------------------')
-    print('   Welcome to The Guessing Game   ')
-    print('----------------------------------')
-
-    ai_choice = random.randint(0,20)
-    tries = 0
-    player_guess = guess()
-
-    while player_guess != ai_choice:      
-        try:    
-            if player_guess > ai_choice:
-                if player_guess > 20:
-                    print('Oh wait, it has to be 1-20 ... did I mention that?')
-                    player_guess = guess()
-                else:
-                    print("My number is lower!")
-                    tries += 1
-                    player_guess = guess()
-                    
-            elif player_guess < ai_choice:
-                if player_guess <= 0:
-                    print('Wait a second, it has to be 1-20 ... did I mention that?')
-                    player_guess = guess()
-                else:
-                    print("My number is higher!")
-                    tries += 1
-                    player_guess = guess()
-            else:
-                break
-                
+    
+    def guess():
+        try:
+            guess = int(input('Pick a number, 1-20:\n  *'))
         except:
-            print("Sorry! Try again")
-            player_guess = guess()
-            continue
-    
-    tries += 1
-    
-    print('\n')
-    print("You Got It! Great Job!")
-    print(f"You did it in {tries} tries!")
-    print('\n')
-    
-    high_score.append(tries)
-    high_score.sort()
-    print(f'The HIGHSCORE is: {high_score[0]}')
-    print('\n')
-    
-    play_again = input('Would you like to play again? [y]es/[n]o:  ')
+            print("AI's only know numbers... I need a number")
+        else:
+            return guess
 
-    if play_again == 'y':
-        print('\n')
-        print("Awesome! Let's play!")
-        print('\n')
+
+    high_score = []
+    wanna_play = input('Do you wanna play my guessing game? [y]es/[n]o:  ')
+
+    while wanna_play == 'y':
+        print('----------------------------------')
+        print('   Welcome to The Guessing Game   ')
+        print('----------------------------------')
+
         ai_choice = random.randint(0,20)
         tries = 0
+        player_guess = guess() 
 
-    else:
-        print('Thank you for playing!')
-        break
+        while player_guess != ai_choice:
+            try:    
+                if player_guess > ai_choice:
+                    if player_guess > 20:
+                        print('Oh wait, it has to be 1-20 ... did I mention that?')
+                        player_guess = guess()
+                    else:
+                        print("My number is lower!")
+                        tries += 1
+                        player_guess = guess()
 
-if wanna_play == 'n':
-    print('Aw, ok :(')
+                elif player_guess < ai_choice:
+                    if player_guess <= 0:
+                        print('Oh wait, it has to be 1-20 ... did I mention that?')
+                        player_guess = guess()
+                    else:
+                        print("My number is higher!")
+                        tries += 1
+                        player_guess = guess()
+                else:
+                    break
 
+            except:
+                print("Sorry! Try again")
+                player_guess = guess()
+                continue
+
+        tries += 1
+
+        print('\n')
+        print("You Got It! Great Job!")
+        print(f"You did it in {tries} tries!")
+        print('\n')
+
+        high_score.append(tries)
+        high_score.sort()
+        print(f'The HIGHSCORE is: {high_score[0]}')
+        print('\n')
+
+        play_again = input('Would you like to play again? [y]es/[n]o:  ')
+
+        if play_again == 'y':
+            print('\n')
+            print("Awesome! Let's play!")
+            print('\n')
+            ai_choice = random.randint(0,20)
+            tries = 0
+        else:
+            print('Thank you for playing!')
+            break
+
+    if wanna_play == 'n':
+        print('Aw, ok :,(')
+
+
+# Kick off the program by calling the start_game function.
+start_game()
