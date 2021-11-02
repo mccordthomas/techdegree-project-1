@@ -36,7 +36,7 @@ while wanna_play == 'y':
                 tries += 1
                 player_guess = guess()
 
-            if player_guess == ai_choice:
+            else:
                 break
                 
         except:
