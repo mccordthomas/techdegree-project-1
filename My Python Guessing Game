@@ -76,3 +76,6 @@ while wanna_play == 'y':
         print('Thank you for playing!')
         break
 
+if wanna_play == 'n':
+    print('Aw, ok :(')
+
