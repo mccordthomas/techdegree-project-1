@@ -2,6 +2,7 @@
 
 import random
 
+
 def guess():
     try:
         guess = int(input('Pick a number between 1 and 20:  '))
@@ -9,6 +10,7 @@ def guess():
         print("AI's only know numbers... I need a number")
     else:
         return guess
+
 
 high_score = []
 wanna_play = input('Do you wanna play my guessing game? [y]es/[n]o:  ')
@@ -20,22 +22,18 @@ while wanna_play == 'y':
 
     ai_choice = random.randint(0,20)
     tries = 0
-
     player_guess = guess()
 
-    while player_guess != ai_choice:
-        
+    while player_guess != ai_choice:      
         try:    
             if player_guess > ai_choice:
                 print("My number is lower!")
                 tries += 1
                 player_guess = guess()
-
             elif player_guess < ai_choice:
                 print("My number is higher!")
                 tries += 1
                 player_guess = guess()
-
             else:
                 break
                 
