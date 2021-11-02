@@ -24,19 +24,27 @@ while wanna_play == 'y':
     player_guess = guess()
 
     while player_guess != ai_choice:
-        if player_guess > ai_choice:
-            print("My number is lower!")
-            tries += 1
-            player_guess = guess()
+        
+        try:    
+            if player_guess > ai_choice:
+                print("My number is lower!")
+                tries += 1
+                player_guess = guess()
 
-        elif player_guess < ai_choice:
-            print("My number is higher!")
-            tries += 1
-            player_guess = guess()
+            elif player_guess < ai_choice:
+                print("My number is higher!")
+                tries += 1
+                player_guess = guess()
 
-        if player_guess == ai_choice:
-            tries += 1
-            break
+            if player_guess == ai_choice:
+                break
+                
+        except:
+            print("Sorry! Try again")
+            player_guess = guess()
+            continue
+    
+    tries += 1
     
     print('\n')
     print("You Got It! Great Job!")
@@ -54,7 +62,7 @@ while wanna_play == 'y':
         print('\n')
         print("Awesome! Let's play!")
         print('\n')
-        ai_choice = int(random.randrange(1,21))
+        ai_choice = random.randint(0,20)
         tries = 0
 
     else:
