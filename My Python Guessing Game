@@ -105,7 +105,11 @@ def start_game():
             break
 
     if wanna_play == 'n':
-        print('Aw, ok :,(')
+        for_sure = input('Are you sure? [y]es/[n]o:  ')
+        if for_sure == 'y':
+            print('Aww, ok :(')
+        else:
+            start_game()
 
 
 # Kick off the program by calling the start_game function.
