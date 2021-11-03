@@ -1,2 +1,2 @@
 # Techdegree Project 1
- My techdegree project 1, the number guessing game
+ My entry for the Treehouse Techdegree project 1, the number guessing game
