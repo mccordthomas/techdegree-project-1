@@ -44,6 +44,12 @@ def start_game():
     high_score = []
     wanna_play = input('Do you wanna play my guessing game? [y]es/[n]o:  ')
 
+    while wanna_play != 'y' or 'n':
+        print('[y]es or [n]o ...')
+        wanna_play = input('Wanna play? ')
+        if wanna_play == 'y' or 'n':
+            break
+
     while wanna_play == 'y':
         print('----------------------------------')
         print('   Welcome to The Guessing Game   ')
